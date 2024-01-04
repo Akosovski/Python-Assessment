@@ -21,4 +21,13 @@ def pyramid(rows):
 
     return pyramid
 
+def halfpyramid(rows):
+    rowString = ""
+    for i in range(rows):
+        for j in range(i+1):
+            rowString += "*"
+        rowString += "\n"
+    return rowString
+
 print(pyramid(5))
+print(halfpyramid(5))
