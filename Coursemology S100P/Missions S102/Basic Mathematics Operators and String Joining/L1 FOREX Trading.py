@@ -1,3 +1,10 @@
+# Question 1: Foreign Exchange Calculator
+def calcFX(fxr, amountSGD):
+    # write your codes here
+    foreign_currency_amount = amountSGD / fxr
+    return foreign_currency_amount
+
+# Question 2: Foreign Exchange Report
 def fxReport(curCode, fxRate, sgdAmount):
     foreign_currency_amount = sgdAmount / fxRate
     foreign_currency_amount = round(foreign_currency_amount)
