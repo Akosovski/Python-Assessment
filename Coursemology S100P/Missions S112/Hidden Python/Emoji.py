@@ -1,0 +1,1 @@
+print("Wow! I can print emojis with Python \U0001F4BB \N{snake} \U0001F44D \U0001F929 \U0001F44D")

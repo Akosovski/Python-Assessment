@@ -1,5 +1,5 @@
 
-# NO 1
+# Question 1: Cashier Check
 # def cashier_check(shoppinglist, register):
 #     list = []
 #     for i in range(len(shoppinglist)):
@@ -7,20 +7,26 @@
 #             list.append(shoppinglist[i])
 #     return list
 
-# NO 2
+# Question 2: Cashier Receipt
 def cashier_receipt(shoppinglist, register):
-  total_bill = 0.0
+    total_bill = 0.0
 
-  for item in shoppinglist:
-      if item in register:
-          cost = register[item]
-          quantity = shoppinglist.count(item)
-          total_item_cost = cost * quantity
+    # Use a set to keep track of processed items
+    processed_items = set()
 
-          print(f"{quantity} {item}: ${total_item_cost:.2f}\n")
-          total_bill += total_item_cost
+    for item in shoppinglist:
+        if item in register and item not in processed_items:
+            quantity = shoppinglist.count(item)
+            cost = register[item]
+            total_item_cost = quantity * cost
 
-  return(f"Total: ${total_bill:.2f}")
+            print(f"{quantity} {item}: ${total_item_cost:.2f}")
+            total_bill += total_item_cost
+
+            # Add the item to the set of processed items
+            processed_items.add(item)
+
+    print(f"Total: ${total_bill:.2f}")
 
 # Example usage:
-print(cashier_receipt(['Milk', 'Watermelon', 'Orange', 'Apple', 'Toy'], {'Milk': 3.3, 'Orange': 0.5, 'Watermelon': 5}))
+print(cashier_receipt(['Milk', 'Milk', 'Apple', 'Apple'], {'Milk': 3.3, 'Apple': 0.7}))
