@@ -1,17 +1,15 @@
 def byeVowels(toReverse):
-    original_sentence = ""
-    vowels = "aeiouAEIOU"
+    answer = ""
+    i = 0
+    vowels = ['a', 'i', 'u', 'e', 'o']
 
-    prev_char = None
-    for char in toReverse:
-        if char.lower() in vowels:
-            if char != prev_char:
-                original_sentence += char
+    while i < len(toReverse):
+        answer += toReverse[i]
+        if toReverse[i] in vowels:
+            i += 3
         else:
-            original_sentence += char
-        prev_char = char
-
-    return original_sentence
+            i += 1
+    return answer
 
 print(byeVowels('heeellooo wooorld'))
 print(byeVowels('goood daay'))
