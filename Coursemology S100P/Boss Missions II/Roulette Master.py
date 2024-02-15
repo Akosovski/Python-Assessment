@@ -1,51 +1,53 @@
 import random
 
-def earning_per_bet():
-    total_bets = 0
-    total_win = 0
+def QNS1():
 
-    for x in range(10000):
-        result = random.randint(0, 36)
-        bet_amount = 1
+    dollars = 1
 
-        if result == 0:
-            total_win -= bet_amount
-        elif result % 2 == 0:
-            total_win += bet_amount
+    even_numbers = []
+    for x in range(0, 37, 2):
+        even_numbers.append(x)
+    
+    odd_numbers = []
+    for y in range(1, 37, 2):
+        odd_numbers.append(y)
 
-        total_bets += bet_amount
+    # Expected Earning = (Probability of Winning × Amount Won) − (Probability of Losing × Amount Lost)
 
-    return total_win / total_bets
+    expected_earnings = ((len(odd_numbers) * dollars) - len(even_numbers) * dollars) / 37
+    return round(expected_earnings, 3)
 
-def earning_per_round():
+def QNS2(simulation_count):
+    total_wins = 0
+    total_losses = 0
     total_rounds = 0
-    total_wealth = 0
 
-    for y in range(100000):
-        wealth = 0
-        bet_amount = 1
+    for x in range(simulation_count):
+        wealth = 1
+        spin_result = None
         rounds = 0
 
-        while True:
-            result = random.randint(0, 36)
-
-            if result == 0:
-                wealth -= bet_amount
-                break
-            elif result % 2 == 0:
+        while spin_result != 0:
+            bet_amount = wealth
+            spin_result = random.choice([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36])
+            
+            if spin_result % 2 == 0: 
+                total_wins += 1
                 wealth += bet_amount
                 break
             else:
-                wealth -= bet_amount
-                bet_amount *= 2
-                rounds += 1
+                total_losses += 1
+                wealth *= 2
 
-        total_wealth += wealth
+            rounds += 1
+
         total_rounds += rounds
 
-    return total_wealth / total_rounds
+    average_rounds = total_rounds / simulation_count
+
+    return round(average_rounds)
 
 def roulette():
-    return f"{earning_per_bet():.2f} {earning_per_round():.2f}"
+    return f"{QNS1()}0 {QNS2(10000)}"
 
 print(roulette())
