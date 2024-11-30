@@ -1,7 +1,14 @@
+
 def monotonic_checker(numbers):
-    increasing = all(numbers[i] <= numbers[i + 1] for i in range(len(numbers) - 1))
-    decreasing = all(numbers[i] >= numbers[i + 1] for i in range(len(numbers) - 1))
-    
+    increasing = True
+    decreasing = True
+
+    for i in range(len(numbers) - 1):
+        if numbers[i] > numbers[i + 1]:
+            increasing = False
+        if numbers[i] < numbers[i + 1]:
+            decreasing = False
+
     return increasing or decreasing
 
 print(monotonic_checker([2, 4, 6, 8]))
